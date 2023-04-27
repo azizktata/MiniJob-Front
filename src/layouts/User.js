@@ -21,6 +21,7 @@ import UserNavbar from "components/Navbars/UserNavbar.js";
 import AuthFooter from "components/Footers/AuthFooter.js";
 
 import routes from "routes.js";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const User = (props) => { 
     const mainContent = React.useRef(null);
@@ -72,12 +73,29 @@ const User = (props) => {
               Quick shifts at local businesses at convenient times for you 
 no CVs and no interviews
               </p>
+              <Row style={{marginLeft:10}}>
               <Button
+               
+               onClick={(e) => e.preventDefault()}
+             >
+              <NavLink 
+                className="nav-link-icon"
+                to="/jobs">
+                  View jobs
+              </NavLink>
+             </Button>
+             <Button
                
                 onClick={(e) => e.preventDefault()}
               >
-                Get Started
+                <NavLink 
+                className="nav-link-icon"
+                to="/jobs">
+                  View companies
+              </NavLink>
               </Button>
+              </Row>
+              
             </Col>
           </Row>
         </Container>
@@ -179,7 +197,7 @@ no CVs and no interviews
                     <Row className="justify-content-center">
                         <br/>
                         <Col>  <p className="mt-3 mb-0 text-muted text-sm">
-                      <span >Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.</span>
+                      <span >work as delivery, get paid by hour</span>
                     </p></Col>
                   
                     </Row>
@@ -219,7 +237,7 @@ no CVs and no interviews
                     <Row className="justify-content-center">
                         <br/>
                         <Col>  <p className="mt-3 mb-0 text-muted text-sm">
-                      <span >Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.</span>
+                      <span >work as staff member, get paid by the hour</span>
                     </p></Col>
                   
                     </Row>
@@ -258,7 +276,7 @@ no CVs and no interviews
                     <Row className="justify-content-center">
                         <br/>
                         <Col>  <p className="mt-3 mb-0 text-muted text-sm">
-                      <span >Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.</span>
+                      <span >Work as store shopper, get paid by the hour</span>
                     </p></Col>
                   
                     </Row>
@@ -279,200 +297,7 @@ no CVs and no interviews
 
 
 
-        <Container className="mt--7" fluid>
-       <Row className="justify-content-center" ><br/><br/><br/><br/><br/></Row>
-          <Row className="justify-content-center" ><br/>
-          <h1 className="display-2 text-white">Browse <big>Jobs</big></h1>
-          </Row>
-          <Row className="justify-content-center" ><br/><br/><br/><br/><br/></Row>
-
-          <Row className="justify-content-center" >
-          <Col lg="3" xl="3">
-          <Row className="justify-content-center"><br/></Row>
-              <Card className="card-profile shadow">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <span className="h2 font-weight-bold mb-0">
-                          FlexStaff
-                        </span>
-
-                        <br/>
-                        <br/>
-                      <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-map-pin" />  Tunis</span>
-                        <br/>
-                        <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-calendar" />  Lundi 27th Mar </span>
-                      </div>
-                      <Col className="col-auto">
-                      <Media className="align-items-center">
-                      <Button
-                      color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      Salary
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col ><p className="mt-3 mb-0 text-muted text-sm">
-                      
-                      <span className="text-success mr-2">
-                        <i className="fa fa-usd" /> 5 dt/hr
-                      </span>{" "}
-                    </p></Col>
-                    <Col className="col-auto">
-                      
-                    <Media className="align-items-center">  
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      
-                    >
-                      Apply
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-               
-                <Row className="justify-content-center"><br/></Row>
-              </Col>
-
-
-
-
-
-
-              <Col lg="3" xl="3">
-          <Row className="justify-content-center"><br/></Row>
-              <Card className="card-profile shadow">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <span className="h2 font-weight-bold mb-0">
-                          FlexStaff
-                        </span>
-
-                        <br/>
-                        <br/>
-                      <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-map-pin" />  Tunis</span>
-                        <br/>
-                        <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-calendar" />  Lundi 27th Mar </span>
-                      </div>
-                      <Col className="col-auto">
-                      <Media className="align-items-center">
-                      <Button
-                      color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      Salary
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col ><p className="mt-3 mb-0 text-muted text-sm">
-                      
-                      <span className="text-success mr-2">
-                        <i className="fa fa-usd" /> 5 dt/hr
-                      </span>{" "}
-                    </p></Col>
-                    <Col className="col-auto">
-                      
-                    <Media className="align-items-center">  
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      
-                    >
-                      Apply
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-               
-                <Row className="justify-content-center"><br/></Row>
-              </Col>
-              <Col lg="3" xl="3">
-          <Row className="justify-content-center"><br/></Row>
-              <Card className="card-profile shadow">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <span className="h2 font-weight-bold mb-0">
-                          FlexStaff
-                        </span>
-
-                        <br/>
-                        <br/>
-                      <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-map-pin" />  Tunis</span>
-                        <br/>
-                        <span className="mt-3 mb-0 text-muted text-sm" >
-                        <i className="fa fa-calendar" />  Lundi 27th Mar </span>
-                      </div>
-                      <Col className="col-auto">
-                      <Media className="align-items-center">
-                      <Button
-                      color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      Salary
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col ><p className="mt-3 mb-0 text-muted text-sm">
-                      
-                      <span className="text-success mr-2">
-                        <i className="fa fa-usd" /> 5 dt/hr
-                      </span>{" "}
-                    </p></Col>
-                    <Col className="col-auto">
-                      
-                    <Media className="align-items-center">  
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      
-                    >
-                      Apply
-                    </Button>
-              </Media>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-               
-                <Row className="justify-content-center"><br/></Row>
-              </Col>
-
-          </Row>
-          
-          <br/><br/>
-          <Row className="justify-content-center" >
-            <br/><br/>
-            
-            <Button>View All</Button></Row>
-          </Container>
+        {/*  */}
 
 
          

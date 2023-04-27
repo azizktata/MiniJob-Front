@@ -66,6 +66,7 @@ const Profile = () => {
     firstName: "",
     lastName: "",
     businessLocation: "",
+    sector: "",
     password: "",
     description:"",
     
@@ -82,7 +83,7 @@ const Profile = () => {
     }}
     ).then(response => { 
         console.log(response);
-        alert("Profile updated successfully!");
+        window.location.reload();
       }).catch(error => {
         console.log(error);
         alert("Error updating Profile.");
@@ -127,7 +128,7 @@ const Profile = () => {
                   <div className="col">
                     <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
-                        <span className="heading">5</span>
+                        <span className="heading">3</span>
                         <span className="description">Stars</span>
                       </div>
                   
@@ -334,6 +335,7 @@ const Profile = () => {
                             }}
                           />
                         </FormGroup>
+                        
                       </Col>
                     </Row>
                     
@@ -342,6 +344,24 @@ const Profile = () => {
                   {/* Description */}
                   <h6 className="heading-small text-muted mb-4">About me</h6>
                   <div className="pl-lg-4">
+                  <FormGroup>
+                          <label
+                            className="form-control-label"
+                            htmlFor="input-sector"
+                          >
+                            Sector
+                          </label>
+                          <Input
+                            className="form-control-alternative"
+                            id="sector"
+                            placeholder={user.sector}
+                            type="text"
+                            value={updatedUser.sector}
+                            onChange={(e) => {
+                              setUpdatedUser({ ...updatedUser, sector: e.target.value });
+                            }}
+                          />
+                        </FormGroup>
                     <FormGroup>
                       <label>About Me</label>
                       <Input

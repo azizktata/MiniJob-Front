@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Search from './Search'
-import { Row, Col, Container, Card, CardHeader,CardFooter, CardTitle,CardBody, CardText } from 'reactstrap'
+import { Row, Col, Container, Card, CardHeader,CardFooter, CardTitle,CardBody, CardText, Form, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap'
 
 
 import CardeJ from './CardeJ';
@@ -214,7 +214,18 @@ const [isClosed, setIsClosed] = useState(false);
           <div className="" >
           <Row className="justify-content-center" style={{}}>
           
-          <Search />
+          <Form className="navbar-search navbar-search-dark form-inline  ">
+            <FormGroup className="mb-0">
+              <InputGroup className="input-group-alternative ">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="fas fa-search" />
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input placeholder="Search" type="text" />
+              </InputGroup>
+            </FormGroup>
+          </Form>
            
           </Row>
           </div>

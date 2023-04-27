@@ -33,7 +33,7 @@ import routes from "routes.js";
 
 const Companies = (props) => {
 
-       const mainContent = React.useRef(null);
+    const mainContent = React.useRef(null);
     const location = useLocation();
   
     React.useEffect(() => {

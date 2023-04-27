@@ -77,7 +77,7 @@ const Login = () => {
         .then((response) => {
           console.log(response.data);
           // Do something with the response
-          alert("Go to Company dasboard");
+        
           if(response.data){
             localStorage.setItem('companyid', response.data.id)
             localStorage.setItem('partnertoken', response.data.token)

@@ -33,6 +33,7 @@ import { useState , useEffect } from "react";
 
 import axios from "axios";
 import BrowseJ from "layouts/BrowseJ/BrowseJ";
+import Browse from "layouts/BrowseC/Browse";
 
 
 
@@ -61,7 +62,7 @@ root.render(
  <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
       <Route path="/user" render={(props) => <UserLayout {...props} />} />
-      <Route path="/companies" render={(props) => <CompaniesLayout {...props} />} />
+      <Route path="/companies" render={(props) => <Browse {...props} />} />
       <Route path="/userprofile" render={(props) => <UserProfileLayout {...props} />} />
       <Route path="/jobs" render={(props) => <BrowseJ {...props} />} />
       <Redirect from="/" to="/auth/login" />

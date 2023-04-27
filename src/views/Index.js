@@ -115,23 +115,24 @@ const Index = (props) => {
           jobs.map(async (job) => {
             try {
               const res = await fetchCandidats(job.idJ);
-              const newCandidats = res.map((c) => ({
+              const newCandidats = res.map((c,index) => ({
                 clientId : c.idC,
                 clientFirstName: c.firstName,
                 clientLastName: c.lastName,
                 clientEmail: c.email,
+                status: job.appliedClients.length!==0 ? job.appliedClients[index].status : job.appliedClients.status,
+
               }));
               const newApplyer = {
                 jobId : job.idJ,
                 jobTitle: job.title,
                 candidats: newCandidats,
-                status: job.appliedClients.length!==0 ? job.appliedClients[0].status : job.appliedClients.status,
               };
               setApplyers((prevApplyers) => [
                 ...prevApplyers,
                 newApplyer
               ]);
-              console.log(newApplyer);
+               console.log(applyers);
             } catch (error) {
               console.error(error);
             }
@@ -166,35 +167,35 @@ const Index = (props) => {
         },
         data: {}
       });
-    
+    // console.log(response.data)
       window.location.reload()
     } catch (error) {
       console.error(error);
     }
    }
 
-   // GET api/v1/candidats and set state
-   useEffect(() => {
-    const fetchJobSeekers = async () => {
-      try {
-        const response = await axios.get(`/api/v1/candidats`, {
-           headers: { 
-             Authorization: `Bearer ${storedtoken}`
-           },
-           data: {}
-          });
-          // console.log(response.data);
-          setJobSeekers(response.data);
-          
-          // console.log(response.data[0].status)
-          // console.log(jobSeekers.length)
+  //  // GET api/v1/candidats and set state
+  //  useEffect(() => {
+  //   const fetchJobSeekers = async () => {
+  //     try {
+  //       const response = await axios.get(`/api/v1/candidats`, {
+  //          headers: { 
+  //            Authorization: `Bearer ${storedtoken}`
+  //          },
+  //          data: {}
+  //         });
+  //         // console.log(response.data);
+  //         setJobSeekers(response.data);
+  //         //console.log(response.data)
+  //         // console.log(response.data[0].status)
+  //         // console.log(jobSeekers.length)
          
-          } catch (error) {
-            console.error(error);
-          }
-        };
-    fetchJobSeekers();
-    }, []);
+  //         } catch (error) {
+  //           console.error(error);
+  //         }
+  //       };
+  //   fetchJobSeekers();
+  //   }, []);
  
   return (
     <>
@@ -226,8 +227,8 @@ const Index = (props) => {
                 </div> */}
               </Row>
             </CardHeader>
-            {jobs && candidat.candidats.map((C)=>(
-              <Table className="align-items-center table-flush" responsive key={C.clientId}>
+            
+              <Table className="align-items-center table-flush" responsive >
               <thead className="thead-light">
                 <tr>
                   <th scope="col">Job seeker name</th>
@@ -238,7 +239,8 @@ const Index = (props) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+              {jobs && candidat.candidats.map((C,index)=>(
+                <tr key={C.clientId}>
                   <th scope="row">{C.clientFirstName}{C.clientLastName}</th>
                   <td>
                     {C.clientEmail}
@@ -267,7 +269,7 @@ const Index = (props) => {
                   </Button>
                   </td>
                   <td>
-                    {candidat.status}
+                    {C.status}
                   {/* <span className="text-warning mr-2">
                       <i className="fas fa-star" />  
                        <i className="fas fa-star" /> 
@@ -277,10 +279,10 @@ const Index = (props) => {
                     </span>{" "} */}
                   </td>
                 </tr>
-               
+                ))}
               </tbody>
             </Table>
-            ))}
+           
             
           </Card>
         </Col>

@@ -33,9 +33,7 @@ const UserHeader = () => {
       try {
         const response = await axios.get(`/api/v1/partners/${storedid}`, {
           headers: { 
-            'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
-            Accept: "application/json",
+            
             Authorization: `Bearer ${storedtoken}`
           },
           data: {}
@@ -47,7 +45,7 @@ const UserHeader = () => {
       }
     };
     fetchUser();
-  }, [storedid, storedtoken]);
+  }, []);
   return (
     <>
       <div

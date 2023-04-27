@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
   Button,
@@ -34,13 +35,14 @@ const Register = () => {
       setIsCompany(checked);
     }
   };
+  const history = useHistory()
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     if (isCandidate) {
       axios
-        .post("http://localhost:8282/api/v1/auth/register", {
+        .post("/api/v1/auth/register", {
           firstName,
           lastName,
           email,
@@ -48,6 +50,12 @@ const Register = () => {
         })
         .then((response) => {
           console.log(response.data);
+          if(response.data){
+            localStorage.setItem('userid', response.data.id)
+            localStorage.setItem('usertoken', response.data.token)
+            history.push("/user");
+            window.location.reload(false);
+          }
           // Do something with the response
         })
         .catch((error) => {
@@ -56,7 +64,7 @@ const Register = () => {
         });
     } else if (isCompany) {
       axios
-        .post("http://localhost:8282/api/v1/auth/register/partner", {
+        .post("/api/v1/auth/register/partner", {
           firstName,
           lastName,
           email,
@@ -64,6 +72,12 @@ const Register = () => {
         })
         .then((response) => {
           console.log(response.data);
+          if(response.data){
+            localStorage.setItem('companyid', response.data.id)
+            localStorage.setItem('partnertoken', response.data.token)
+            history.push("/admin");
+            window.location.reload(false);
+          }
           // Do something with the response
         })
         .catch((error) => {
