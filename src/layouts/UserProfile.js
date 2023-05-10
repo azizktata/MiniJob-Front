@@ -1,26 +1,21 @@
+/* eslint-disable no-unused-vars */
 
 import React, { useEffect, useState } from "react";
-import { useLocation, Route, useHistory, Redirect } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 // reactstrap components
 import {
     Button,
     Card,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
     CardHeader,
     Media,
     CardBody,
-    CardTitle,
+    
     FormGroup,
     Form,
-    InputGroupAddon,
-    InputGroupText,
+    
+    
     Input,
-    InputGroup,
-    Navbar,
-    Nav,
+    
     Container,
     Row,
     Col,
@@ -31,7 +26,7 @@ import {
 import UserNavbar from "components/Navbars/UserNavbar.js";
 import AuthFooter from "components/Footers/AuthFooter.js";
 
-import routes from "routes.js";
+
 import axios from "axios";
 import StarRatingComponent from "react-star-rating-component";
 
@@ -137,6 +132,7 @@ const UserProfile = (props) => {
       }
     };
     fetchUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [updatedUser, setUpdatedUser] = useState({
@@ -185,7 +181,7 @@ const UserProfile = (props) => {
   }
   
 
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(3);
 
   const handleRatingChange = (idP, nextValue) => {
     console.log({stars:nextValue})
@@ -247,7 +243,7 @@ const UserProfile = (props) => {
            <img
              alt="..."
              className="rounded-circle"
-             src={require("../assets/img/theme/team-4-800x800.jpg")}
+             src={require("../assets/img/theme/team-1-800x800.jpg")}
            />
          </a>
        </div>

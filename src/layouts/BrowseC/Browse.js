@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import { useLocation, Route, Switch, Redirect } from "react-router-dom";
+import { useLocation, Route } from "react-router-dom";
 
 import { FaCheck } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 
 import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardGroup,
-  Button,
+ 
   Row,
   Col,
   Container,
@@ -32,12 +25,6 @@ import axios from 'axios';
 
 function Browse() {
 
-  const handleSearch = (event) => {
-  //   var v = event.target.value
-  //  setsearchTerm(v);
-  //  BlogData.filter((item)=> item.includes(searchTerm))
-  }
-  const [searchTerm, setsearchTerm] = useState("")
 
   const mainContent = React.useRef(null);
   const location = useLocation();
@@ -144,6 +131,20 @@ if (isSuccess === true) {
   }, 7000);
 }
 })
+
+const [searchTerm, setSearchTerm] = useState("");
+const [filteredList, setFilteredList] = useState([]);
+
+const filterList = (list) => {
+  return list?.filter((item) => item.businessName.toLowerCase().includes(searchTerm.toLowerCase()));
+};
+
+useEffect(() => {
+  setFilteredList(filterList(company));
+}, [searchTerm]);
+
+
+
   return (
     
     <div className='main-content' ref={mainContent}>
@@ -191,7 +192,7 @@ if (isSuccess === true) {
                     <i className="fas fa-search" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
+                <Input placeholder="Search" type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
               </InputGroup>
             </FormGroup>
           </Form>
@@ -221,7 +222,7 @@ if (isSuccess === true) {
 
       <div className='Layouts' style={{margin:"5%", flexFlow:"row wrap"}}>
       <Row>
-        {company && company.map((blg, index) => (
+        {filteredList && filteredList.map((blg, index) => (
           <Col sm="6" lg="6" xl="3" key={index}>
             <CardeC
               

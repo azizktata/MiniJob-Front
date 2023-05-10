@@ -9,6 +9,7 @@ import UserNavbar from "components/Navbars/UserNavbar.js";
 import axios from 'axios';
 import { FaCheck } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
+import { event } from 'jquery';
 
 
 function BrowseJ(props) {
@@ -177,6 +178,18 @@ const [isClosed, setIsClosed] = useState(false);
       }, 7000);
     }
   })
+
+  const [searchTerm, setSearchTerm] = useState("");
+const [filteredList, setFilteredList] = useState([]);
+
+const filterList = (list) => {
+  return list?.filter((item) => item.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()));
+};
+
+useEffect(() => {
+  setFilteredList(filterList(jobDetails));
+}, [searchTerm]);
+
   return (
     <div className="main-content" ref={mainContent} >
   
@@ -222,7 +235,7 @@ const [isClosed, setIsClosed] = useState(false);
                     <i className="fas fa-search" />
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
+                <Input placeholder="Search" type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
               </InputGroup>
             </FormGroup>
           </Form>
@@ -251,7 +264,7 @@ const [isClosed, setIsClosed] = useState(false);
         <Container>
         <Row style={{display:"flex"}}>
         <Col xs="6" className='cardsC' style={{display:"flex", flexDirection:"column"}} >
-        {jobDetails && jobDetails.map((job, index) => (
+        {filteredList && filteredList.map((job, index) => (
           
             <CardeJ
               key={index}

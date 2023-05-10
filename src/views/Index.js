@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /*!
 
 =========================================================
@@ -17,21 +19,13 @@
 */
 import { useState, useEffect } from "react";
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
-// javascipt plugin for creating charts
 
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
 // reactstrap components
 import {
   Button,
   Card,
   CardHeader,
-  CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
+ 
   Table,
   Container,
   Row,
@@ -49,7 +43,6 @@ import axios from "axios";
 const Index = (props) => {
  const storedid = localStorage.getItem('companyid');
  const storedtoken = localStorage.getItem('partnertoken');
- const [user, setUser] = useState(null);
  const [jobs, setJobs] = useState([]);
  
  const [jobSeekers, setJobSeekers] = useState([]);
@@ -174,28 +167,28 @@ const Index = (props) => {
     }
    }
 
-  //  // GET api/v1/candidats and set state
-  //  useEffect(() => {
-  //   const fetchJobSeekers = async () => {
-  //     try {
-  //       const response = await axios.get(`/api/v1/candidats`, {
-  //          headers: { 
-  //            Authorization: `Bearer ${storedtoken}`
-  //          },
-  //          data: {}
-  //         });
-  //         // console.log(response.data);
-  //         setJobSeekers(response.data);
-  //         //console.log(response.data)
-  //         // console.log(response.data[0].status)
-  //         // console.log(jobSeekers.length)
+   // GET api/v1/candidats and set state
+   useEffect(() => {
+    const fetchJobSeekers = async () => {
+      try {
+        const response = await axios.get(`/api/v1/candidats`, {
+           headers: { 
+             Authorization: `Bearer ${storedtoken}`
+           },
+           data: {}
+          });
+          // console.log(response.data);
+          setJobSeekers(response.data);
+          //console.log(response.data)
+          // console.log(response.data[0].status)
+          // console.log(jobSeekers.length)
          
-  //         } catch (error) {
-  //           console.error(error);
-  //         }
-  //       };
-  //   fetchJobSeekers();
-  //   }, []);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    fetchJobSeekers();
+    }, []);
  
   return (
     <>
