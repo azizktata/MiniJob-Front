@@ -16,9 +16,9 @@ import { FaStar } from 'react-icons/fa';
 const Blog = (props) => {
   return (
     <Card style={{margin:"3%"}}>
-      <CardImg alt="Card image cap" src={require("../../assets/img/theme/angular.jpg")} top
+      <CardImg alt="Card image cap" src={require("../../assets/img/theme/"+props.imageP)} top
       width="100%" />
-      <Image className="rounded-circle" alt="Card image cap" src={require("../../assets/img/theme/sketch.jpg")} boxSize='150px'
+      <Image className="rounded-circle" alt="Card image cap" src={require("../../assets/img/theme/"+props.imageC)} boxSize='150px'
     objectFit='cover' style={{zIndex:"1", position:"absolute", margin:"55% 7%"}}/>
       <CardBody className="p-4" style={{zIndex:"2"}}>
         <div style={{display:"flex",flexDirection:"column",alignItems:"flex-start"}}>

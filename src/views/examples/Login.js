@@ -54,7 +54,7 @@ const Login = () => {
         .then((response) => {
           console.log(response.data);
           // Do something with the response
-          alert("Go to user interface");
+          //alert("Go to user interface");
           if(response.data){
             localStorage.setItem('userid', response.data.id)
             localStorage.setItem('usertoken', response.data.token)
@@ -65,7 +65,7 @@ const Login = () => {
         .catch((error) => {
           console.error(error);
           // Handle the error
-          alert('Invalid email or password');
+          setError('invalid email or password');
         });
     } else if (isCompany) {
       axios
@@ -92,11 +92,12 @@ const Login = () => {
         .catch((error) => {
           console.error(error);
           // Handle the error
-          alert('Invalid email or password');
+          setError('invalid email or password');
+          //alert('Invalid email or password');
         });
     }
   };
-
+  const [error, setError] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -145,6 +146,7 @@ const Login = () => {
                     onChange={handlePasswordChange}
                   />
                 </InputGroup>
+                {error !=="" && <p style={{color:"red"}}>{error}</p>}
               </FormGroup>
 
               <FormGroup>

@@ -60,7 +60,7 @@ function Browse() {
    
   const storedtoken = localStorage.getItem('usertoken');
   const storedid = localStorage.getItem('userid');
-  const [company,setCompanys] = useState(null)
+  const [company,setCompanys] = useState([])
   const [nbr,setNbr] = useState(null)
   const [rate,setRate] = useState(0)
 
@@ -135,13 +135,13 @@ if (isSuccess === true) {
 const [searchTerm, setSearchTerm] = useState("");
 const [filteredList, setFilteredList] = useState([]);
 
-const filterList = (list) => {
-  return list?.filter((item) => item.businessName.toLowerCase().includes(searchTerm.toLowerCase()));
-};
+// const filterList = (list) => {
+//   return list?.filter((item) => item.businessName.toLowerCase().includes(searchTerm.toLowerCase()));
+// };
 
-useEffect(() => {
-  setFilteredList(filterList(company));
-}, [searchTerm]);
+// useEffect(() => {
+//   setFilteredList(filterList(company));
+// }, [searchTerm]);
 
 
 
@@ -222,11 +222,13 @@ useEffect(() => {
 
       <div className='Layouts' style={{margin:"5%", flexFlow:"row wrap"}}>
       <Row>
-        {filteredList && filteredList.map((blg, index) => (
+        {company && company.map((blg, index) => (
           <Col sm="6" lg="6" xl="3" key={index}>
             <CardeC
               
               title={blg.businessName}
+              imageP = {BlogData[index].image}
+              imageC = {BlogData[index].imageC}
               subtitle={blg.description}
               service={blg.sector}
               location={blg.businessLocation}
@@ -242,52 +244,18 @@ useEffect(() => {
   
   )
 }
+
+
+
 const BlogData = [
   {
-    image: "../../assets/img/theme/sketch.jpg",
-    title: "This is simple blog",
-    subtitle: "2 comments, 1 Like",
-    service:
-      "Livraison",
-    location:"Tunis",
-    btnbg: "primary",
+    image: "restoLogo.png",
+    imageC : "restaurant.png",
   },
   {
-  image: "../../assets/img/theme/sketch.jpg",
-    title: "This is simple blog",
-    subtitle: "2 comments, 1 Like",
-    service:
-      "Livraison",
-    location:"Tunis",
-    btnbg: "primary",
-  },
-  {
-  image: "../../assets/img/theme/sketch.jpg",
-    title: "This is simple blog",
-    subtitle: "2 comments, 1 Like",
-    service:
-      "Livraison",
-    location:"Tunis",
-    btnbg: "primary",
-  },
-  {
-    image: "../../assets/img/theme/sketch.jpg",
-      title: "This is simple blog",
-      subtitle: "2 comments, 1 Like",
-      service:
-        "Livraison",
-      location:"Tunis",
-      btnbg: "primary",
-    },
-    {
-      image: "../../assets/img/theme/sketch.jpg",
-        title: "This is simple blog",
-        subtitle: "2 comments, 1 Like",
-        service:
-          "Livraison",
-        location:"Tunis",
-        btnbg: "primary",
-      }
+  image: "pimkie.png",
+  imageC : "magasin.jpg",
+  }
 ];
 
 export default Browse

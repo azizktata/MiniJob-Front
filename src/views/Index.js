@@ -76,7 +76,7 @@ const Index = (props) => {
            data: {}
           });
          setJobs(response.data);
-        //  console.log(response.data)
+         console.log(response.data)
         
            } catch (error) {
              console.error(error);
@@ -193,7 +193,7 @@ const Index = (props) => {
   return (
     <>
      
-      {jobSeekers && <Header jobsOffered = {jobs}  jobDemands = {jobSeekers} />}
+      {jobSeekers && <Header jobsOffered = {jobs}  jobDemands = {applyers} />}
      
      {jobs && applyers.slice(1).map((candidat) =>(
       <div style={{padding:50}}>
